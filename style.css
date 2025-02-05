@@ -1,0 +1,143 @@
+body {
+    background-color: #ffebef;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+h1 {
+    color: #d63384;
+    font-size: 2.5em;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px #ff66b2; }
+    to { text-shadow: 0 0 20px #ff3385; }
+}
+
+/* Heart Animation */
+.heart {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    position: relative;
+    margin: 50px auto;
+    transform: rotate(-45deg);
+    animation: heartbeat 1s infinite alternate;
+}
+
+.heart::before, .heart::after {
+    content: "";
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.heart::before { top: -50px; left: 0; }
+.heart::after { left: 50px; top: 0; }
+
+@keyframes heartbeat {
+    from { transform: scale(1) rotate(-45deg); }
+    to { transform: scale(1.1) rotate(-45deg); }
+}
+
+.message {
+    color: #ff3366;
+    font-size: 1.5em;
+}
+
+button {
+    background-color: #ff4d88;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #e6005c;
+}
+
+/* Surprise elements */
+.surprise {
+    font-size: 1.5em;
+    color: #ff3366;
+    margin-top: 20px;
+    animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Falling hearts effect */
+.falling-heart {
+    position: absolute;
+    color: red;
+    font-size: 30px;
+    opacity: 0.7;
+    animation: fall 3s linear forwards;
+}
+
+@keyframes fall {
+    from { transform: translateY(-10px); opacity: 1; }
+    to { transform: translateY(100vh); opacity: 0; }
+}
+
+button {
+    background-color: #ff4d88;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #e6005c;
+}
+
+@keyframes floatHearts {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    50% { transform: translateY(-100px) scale(1.5); opacity: 0.8; }
+    100% { transform: translateY(-200px) scale(2); opacity: 0; }
+}
+.message {
+    font-size: 2em;
+    color: #d63384;
+    opacity: 0;
+    transition: opacity 2s ease-in
+}
+.hearts {
+    position: absolute;
+    color: red;
+    font-size: 24px;
+    animation: floatHearts 4s linear infinite;
+}
+@keyframes floatHearts {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    50% { transform: translateY(-100px) scale(1.5); opacity: 0.8; }
+    100% { transform: translateY(-200px) scale(2); opacity: 0; }
+}
+.message {
+    font-size: 2em;
+    color: #d63384;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
+.visible {
+    opacity: 1 !important;
+}
