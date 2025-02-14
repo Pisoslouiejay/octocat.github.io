@@ -1,143 +1,77 @@
 body {
-    background-color: #ffebef;
+    background-color: pink;
+    font-family: Arial, sans-serif;
     text-align: center;
-    font-family: 'Arial', sans-serif;
     overflow: hidden;
+    position: relative;
 }
 
 .container {
     margin-top: 50px;
 }
 
-h1 {
-    color: #d63384;
-    font-size: 2.5em;
-    animation: glow 2s infinite alternate;
-}
-
-@keyframes glow {
-    from { text-shadow: 0 0 10px #ff66b2; }
-    to { text-shadow: 0 0 20px #ff3385; }
-}
-
-/* Heart Animation */
-.heart {
-    width: 100px;
-    height: 100px;
-    background-color: red;
-    position: relative;
-    margin: 50px auto;
-    transform: rotate(-45deg);
-    animation: heartbeat 1s infinite alternate;
-}
-
-.heart::before, .heart::after {
-    content: "";
-    width: 100px;
-    height: 100px;
-    background-color: red;
-    border-radius: 50%;
-    position: absolute;
-}
-
-.heart::before { top: -50px; left: 0; }
-.heart::after { left: 50px; top: 0; }
-
-@keyframes heartbeat {
-    from { transform: scale(1) rotate(-45deg); }
-    to { transform: scale(1.1) rotate(-45deg); }
-}
-
-.message {
-    color: #ff3366;
-    font-size: 1.5em;
-}
-
 button {
-    background-color: #ff4d88;
-    color: white;
-    border: none;
+    display: block;
+    margin: 15px auto;
     padding: 10px 20px;
-    font-size: 1.2em;
-    border-radius: 10px;
+    border: none;
+    border-radius: 20px;
+    font-size: 18px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: transform 0.3s ease-in-out;
 }
 
 button:hover {
-    background-color: #e6005c;
+    transform: scale(1.1);
 }
 
-/* Surprise elements */
-.surprise {
-    font-size: 1.5em;
-    color: #ff3366;
-    margin-top: 20px;
-    animation: fadeIn 1s forwards;
+#startButton {
+    background-color: red;
+    color: white;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* Falling hearts effect */
-.falling-heart {
-    position: absolute;
+#heartImageButton {
+    background-color: white;
     color: red;
-    font-size: 30px;
-    opacity: 0.7;
-    animation: fall 3s linear forwards;
+    border: 2px solid red;
+}
+
+#surpriseButton {
+    background-color: #ff69b4;
+    color: white;
+}
+
+.heart-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.surprise {
+    font-size: 20px;
+    color: red;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
 }
 
 @keyframes fall {
-    from { transform: translateY(-10px); opacity: 1; }
-    to { transform: translateY(100vh); opacity: 0; }
+    to {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
 }
 
-button {
-    background-color: #ff4d88;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1.2em;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-button:hover {
-    background-color: #e6005c;
-}
-
-@keyframes floatHearts {
-    0% { transform: translateY(0) scale(1); opacity: 1; }
-    50% { transform: translateY(-100px) scale(1.5); opacity: 0.8; }
-    100% { transform: translateY(-200px) scale(2); opacity: 0; }
-}
-.message {
-    font-size: 2em;
-    color: #d63384;
-    opacity: 0;
-    transition: opacity 2s ease-in
-}
-.hearts {
-    position: absolute;
-    color: red;
-    font-size: 24px;
-    animation: floatHearts 4s linear infinite;
-}
-@keyframes floatHearts {
-    0% { transform: translateY(0) scale(1); opacity: 1; }
-    50% { transform: translateY(-100px) scale(1.5); opacity: 0.8; }
-    100% { transform: translateY(-200px) scale(2); opacity: 0; }
-}
-.message {
-    font-size: 2em;
-    color: #d63384;
-    opacity: 0;
-    transition: opacity 2s ease-in-out;
-}
-.visible {
-    opacity: 1 !important;
+.background-heart {
+    position: fixed;
+    left: 50%;
+    top: -10px;
+    font-size: 2rem;
+    animation: fall 5s linear infinite;
 }
